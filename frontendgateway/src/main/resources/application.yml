@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: frontend-ui
+            uri: https://linksphere-frontend.onrender.com
+            predicates:
+              - Path=/**
+          - id: frontend-ui-2
+            uri: https://linksphere-service-2.onrender.com
+            predicates:
+              - Path=/**
