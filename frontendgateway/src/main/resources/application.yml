@@ -3,14 +3,22 @@ server:
 
 spring:
   cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            frontend-ui:
+              - uri: https://linksphere-frontend-service-1.onrender.com
+              - uri: https://linksphere-frontend-service-2.onrender.com
     gateway:
       mvc:
         routes:
           - id: frontend-ui
-            uri: https://linksphere-frontend.onrender.com
+            uri: lb://frontend-ui
             predicates:
               - Path=/**
-          - id: frontend-ui-2
-            uri: https://linksphere-service-2.onrender.com
-            predicates:
-              - Path=/**
+            filters:
+              - name: CircuitBreaker
+                args:
+                  name: backendCircuitBreaker
+                  fallbackUri: forward:/api/fallback
