@@ -3,18 +3,18 @@ server:
 
 spring:
   cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            backend-service:
+              - uri: https://service-1-0k83.onrender.com
+              - uri: https://service-2-7sfz.onrender.com
+              - uri: https://service-3-tlij.onrender.com
     gateway:
       mvc:
         routes:
-          - id: backend-1
-            uri: https://service-1-0k83.onrender.com
-            predicates:
-              - Path=/api/**
-          - id: backend-2
-            uri: https://service-2-7sfz.onrender.com
-            predicates:
-              - Path=/api/**
-          - id: backend-3
-            uri: https://service-3-tlij.onrender.com
+          - id: backend-service
+            uri: lb://backend-service
             predicates:
               - Path=/api/**
