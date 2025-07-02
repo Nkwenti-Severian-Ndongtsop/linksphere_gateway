@@ -20,5 +20,5 @@ spring:
             filters:
               - name: CircuitBreaker
                 args:
-                  name: backendCircuitBreaker
+                  id: frontendUiCircuitBreaker
                   fallbackUri: forward:/api/fallback
