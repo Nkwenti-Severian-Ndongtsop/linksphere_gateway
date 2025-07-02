@@ -1,8 +1,8 @@
-name: Keep Frontend Service Active
+name: Keep Frontend Gateway Active
 
 on:
   schedule:
-    - cron: '*/3 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
