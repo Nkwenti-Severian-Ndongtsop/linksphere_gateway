@@ -1,8 +1,8 @@
-name: Keep Backend Service Active
+name: Keep Backend Gateway Active
 
 on:
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
